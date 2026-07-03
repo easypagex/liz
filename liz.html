@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liz Plettner | Collage Artist, Nebraska</title>
+<meta name="description" content="Liz Plettner is a Nebraska-based collage artist creating one-of-a-kind mixed media pieces. Follow her work and get in touch on Instagram.">
+<style>
+  :root{
+    --cream:#fdf6e9;
+    --paper:#f7ecd8;
+    --gold:#d9a441;
+    --gold-dark:#b8842c;
+    --terracotta:#c8683f;
+    --ink:#3b2e22;
+    --moss:#7a8c5a;
+    --rose:#d97a6c;
+    --teal:#4f8a8b;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Georgia', 'Iowan Old Style', serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{
+    font-family:'Trebuchet MS', 'Century Gothic', sans-serif;
+    font-weight:700;
+    letter-spacing:0.5px;
+  }
+  a{color:inherit;text-decoration:none;}
+
+  /* Torn paper texture background helper */
+  .paper-bg{
+    background-color:var(--paper);
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(217,164,65,0.10) 0, transparent 45%),
+      radial-gradient(circle at 80% 70%, rgba(200,104,63,0.10) 0, transparent 45%);
+  }
+
+  /* NAV */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(253,246,233,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:2px solid var(--gold);
+  }
+  nav{
+    max-width:1100px;margin:0 auto;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 24px;
+  }
+  .logo{
+    font-size:1.4rem;
+    color:var(--terracotta);
+    display:flex;flex-direction:column;line-height:1.1;
+  }
+  .logo span{font-size:0.65rem;letter-spacing:2px;color:var(--moss);font-family:'Trebuchet MS',sans-serif;text-transform:uppercase;}
+  .nav-links{display:flex;gap:28px;font-size:0.95rem;font-family:'Trebuchet MS',sans-serif;}
+  .nav-links a{position:relative;padding:4px 0;transition:color .2s;}
+  .nav-links a:hover{color:var(--terracotta);}
+  .nav-cta{
+    background:var(--terracotta);color:#fff !important;
+    padding:9px 18px;border-radius:30px;font-family:'Trebuchet MS',sans-serif;
+    font-size:0.9rem;transition:transform .2s, background .2s;
+  }
+  .nav-cta:hover{background:var(--gold-dark);transform:translateY(-2px);}
+  .menu-toggle{display:none;font-size:1.6rem;background:none;border:none;color:var(--terracotta);cursor:pointer;}
+
+  /* HERO */
+  .hero{
+    position:relative;
+    padding:80px 24px 100px;
+    text-align:center;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(217,164,65,0.18), transparent 40%),
+      radial-gradient(circle at 85% 15%, rgba(217,122,108,0.16), transparent 40%),
+      radial-gradient(circle at 50% 90%, rgba(122,140,90,0.14), transparent 45%),
+      var(--cream);
+    overflow:hidden;
+  }
+  .hero::before, .hero::after{
+    content:"";
+    position:absolute;
+    border-radius:6px;
+  }
+  .hero::before{
+    width:140px;height:100px;background:var(--gold);opacity:0.25;
+    top:60px;left:6%;transform:rotate(-14deg);
+  }
+  .hero::after{
+    width:110px;height:150px;background:var(--rose);opacity:0.22;
+    bottom:20px;right:8%;transform:rotate(10deg);
+  }
+  .eyebrow{
+    font-family:'Trebuchet MS',sans-serif;
+    text-transform:uppercase;letter-spacing:3px;
+    color:var(--moss);font-size:0.85rem;font-weight:700;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem,6vw,4.2rem);
+    color:var(--ink);
+    margin-bottom:14px;
+    position:relative;z-index:2;
+  }
+  .hero h1 em{
+    font-style:normal;color:var(--terracotta);
+    background:linear-gradient(180deg,transparent 60%, rgba(217,164,65,0.35) 60%);
+    padding:0 4px;
+  }
+  .hero p.lead{
+    max-width:620px;margin:0 auto 34px;
+    font-size:1.15rem;color:#5a4a38;
+    position:relative;z-index:2;
+  }
+  .hero-buttons{
+    display:flex;gap:16px;justify-content:center;flex-wrap:wrap;
+    position:relative;z-index:2;
+  }
+  .btn{
+    font-family:'Trebuchet MS',sans-serif;
+    padding:14px 30px;border-radius:32px;
+    font-size:1rem;font-weight:700;
+    display:inline-flex;align-items:center;gap:8px;
+    transition:transform .2s, box-shadow .2s, background .2s;
+    border:2px solid transparent;
+  }
+  .btn-primary{background:var(--terracotta);color:#fff;box-shadow:0 8px 20px rgba(200,104,63,0.35);}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(200,104,63,0.45);}
+  .btn-outline{border-color:var(--ink);color:var(--ink);}
+  .btn-outline:hover{background:var(--ink);color:var(--cream);transform:translateY(-3px);}
+
+  /* COLLAGE STRIP - decorative gallery */
+  .collage-strip{
+    display:flex;gap:14px;
+    max-width:1100px;margin:50px auto 0;
+    padding:0 24px;
+    overflow-x:auto;
+    scrollbar-width:none;
+  }
+  .collage-strip::-webkit-scrollbar{display:none;}
+  .swatch{
+    flex:0 0 auto;width:150px;height:190px;border-radius:8px;
+    position:relative;box-shadow:0 10px 22px rgba(59,46,34,0.18);
+    transform:rotate(var(--r,0deg));
+    transition:transform .3s;
+  }
+  .swatch:hover{transform:rotate(0deg) scale(1.05);}
+  .swatch:nth-child(1){background:linear-gradient(135deg,var(--gold),var(--terracotta));--r:-6deg;}
+  .swatch:nth-child(2){background:linear-gradient(135deg,var(--rose),var(--gold));--r:4deg;margin-top:24px;}
+  .swatch:nth-child(3){background:linear-gradient(135deg,var(--moss),var(--teal));--r:-3deg;}
+  .swatch:nth-child(4){background:linear-gradient(135deg,var(--teal),var(--gold));--r:7deg;margin-top:10px;}
+  .swatch:nth-child(5){background:linear-gradient(135deg,var(--terracotta),var(--rose));--r:-8deg;}
+  .swatch::after{
+    content:"";position:absolute;inset:8px;
+    border:2px dashed rgba(255,255,255,0.5);border-radius:4px;
+  }
+
+  section{padding:90px 24px;}
+  .section-inner{max-width:1000px;margin:0 auto;}
+  .section-head{text-align:center;margin-bottom:50px;}
+  .section-head .eyebrow{margin-bottom:10px;}
+  .section-head h2{font-size:clamp(1.8rem,4vw,2.6rem);color:var(--ink);}
+  .section-head p{max-width:560px;margin:14px auto 0;color:#5a4a38;font-size:1.05rem;}
+
+  /* ABOUT */
+  .about{
+    background:var(--paper);
+    position:relative;
+  }
+  .about-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+  }
+  .about-visual{
+    position:relative;height:360px;
+  }
+  .about-visual .layer{
+    position:absolute;border-radius:10px;box-shadow:0 14px 30px rgba(59,46,34,0.2);
+  }
+  .about-visual .layer1{width:78%;height:78%;top:0;left:0;background:linear-gradient(135deg,var(--gold),var(--terracotta));transform:rotate(-6deg);}
+  .about-visual .layer2{width:60%;height:60%;bottom:0;right:0;background:linear-gradient(135deg,var(--teal),var(--moss));transform:rotate(8deg);}
+  .about-visual .layer3{
+    width:45%;height:45%;top:30%;left:28%;background:var(--cream);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Trebuchet MS',sans-serif;font-weight:700;color:var(--terracotta);
+    transform:rotate(-3deg);text-align:center;font-size:0.95rem;padding:14px;
+    border:3px solid var(--gold);
+  }
+  .about-text h2{font-size:2rem;margin-bottom:18px;color:var(--ink);}
+  .about-text p{margin-bottom:16px;color:#5a4a38;font-size:1.05rem;}
+  .about-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;}
+  .tag{
+    font-family:'Trebuchet MS',sans-serif;font-size:0.85rem;
+    background:var(--cream);border:1.5px solid var(--gold);
+    color:var(--gold-dark);padding:6px 14px;border-radius:20px;font-weight:700;
+  }
+
+  /* WHY / FEATURES */
+  .features{background:var(--cream);}
+  .feature-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:30px;
+  }
+  .feature-card{
+    background:var(--paper);
+    border-radius:14px;padding:32px 26px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(59,46,34,0.08);
+    transition:transform .25s, box-shadow .25s;
+    border-top:5px solid var(--gold);
+  }
+  .feature-card:nth-child(2){border-top-color:var(--terracotta);}
+  .feature-card:nth-child(3){border-top-color:var(--moss);}
+  .feature-card:hover{transform:translateY(-8px);box-shadow:0 16px 30px rgba(59,46,34,0.15);}
+  .feature-icon{
+    width:56px;height:56px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 18px;font-size:1.6rem;
+    background:var(--gold);color:#fff;
+  }
+  .feature-card:nth-child(2) .feature-icon{background:var(--terracotta);}
+  .feature-card:nth-child(3) .feature-icon{background:var(--moss);}
+  .feature-card h3{font-size:1.15rem;margin-bottom:10px;color:var(--ink);}
+  .feature-card p{color:#5a4a38;font-size:0.98rem;}
+
+  /* GALLERY / PORTFOLIO PREVIEW */
+  .gallery{background:var(--paper);}
+  .gallery-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+  }
+  .gallery-item{
+    aspect-ratio:1/1;border-radius:12px;position:relative;overflow:hidden;
+    box-shadow:0 10px 24px rgba(59,46,34,0.15);
+    display:flex;align-items:flex-end;
+  }
+  .gallery-item .cap{
+    position:relative;z-index:2;padding:16px;
+    color:#fff;font-family:'Trebuchet MS',sans-serif;font-weight:700;
+    font-size:0.95rem;width:100%;
+    background:linear-gradient(0deg, rgba(0,0,0,0.45), transparent);
+  }
+  .gallery-item::before{
+    content:"";position:absolute;inset:0;
+  }
+  .gallery-item.g1::before{background:linear-gradient(135deg,var(--gold),var(--rose));}
+  .gallery-item.g2::before{background:linear-gradient(135deg,var(--teal),var(--moss));}
+  .gallery-item.g3::before{background:linear-gradient(135deg,var(--terracotta),var(--gold));}
+  .gallery-item.g4::before{background:linear-gradient(135deg,var(--rose),var(--teal));}
+  .gallery-item.g5::before{background:linear-gradient(135deg,var(--moss),var(--gold));}
+  .gallery-item.g6::before{background:linear-gradient(135deg,var(--gold-dark),var(--terracotta));}
+  .gallery-more{
+    text-align:center;margin-top:40px;
+  }
+
+  /* INSTAGRAM CTA BAND */
+  .insta-band{
+    background:linear-gradient(120deg, var(--terracotta), var(--gold));
+    color:#fff;text-align:center;
+    padding:70px 24px;
+  }
+  .insta-band h2{font-size:clamp(1.6rem,4vw,2.3rem);margin-bottom:14px;}
+  .insta-band p{max-width:560px;margin:0 auto 30px;opacity:0.95;font-size:1.05rem;}
+  .insta-band .btn{background:#fff;color:var(--terracotta);}
+  .insta-band .btn:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(0,0,0,0.2);}
+
+  /* TESTIMONIAL / PROCESS */
+  .process{background:var(--cream);}
+  .steps{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:24px;counter-reset:step;
+  }
+  .step{
+    text-align:center;position:relative;padding:20px 14px;
+  }
+  .step .num{
+    width:44px;height:44px;border-radius:50%;
+    background:var(--ink);color:var(--cream);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Trebuchet MS',sans-serif;font-weight:700;
+    margin:0 auto 14px;font-size:1.1rem;
+  }
+  .step h3{font-size:1.05rem;margin-bottom:8px;color:var(--ink);}
+  .step p{font-size:0.92rem;color:#5a4a38;}
+
+  /* CONTACT */
+  .contact{background:var(--paper);}
+  .contact-box{
+    background:var(--cream);
+    border-radius:18px;
+    padding:50px;
+    display:grid;grid-template-columns:1fr 1fr;gap:44px;
+    box-shadow:0 16px 34px rgba(59,46,34,0.12);
+  }
+  .contact-info h2{font-size:1.7rem;margin-bottom:16px;color:var(--ink);}
+  .contact-info p{color:#5a4a38;margin-bottom:22px;}
+  .contact-list{list-style:none;display:flex;flex-direction:column;gap:14px;}
+  .contact-list li{display:flex;align-items:center;gap:12px;font-family:'Trebuchet MS',sans-serif;}
+  .contact-list .ico{
+    width:38px;height:38px;border-radius:50%;background:var(--gold);
+    color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  form{display:flex;flex-direction:column;gap:14px;}
+  form input, form textarea{
+    padding:14px 16px;border-radius:10px;border:2px solid #e6d6ba;
+    font-family:'Trebuchet MS',sans-serif;font-size:0.95rem;background:#fff;color:var(--ink);
+  }
+  form input:focus, form textarea:focus{outline:none;border-color:var(--terracotta);}
+  form textarea{resize:vertical;min-height:100px;}
+  form button{
+    font-family:'Trebuchet MS',sans-serif;font-weight:700;
+    background:var(--terracotta);color:#fff;border:none;
+    padding:14px;border-radius:10px;font-size:1rem;cursor:pointer;
+    transition:background .2s, transform .2s;
+  }
+  form button:hover{background:var(--gold-dark);transform:translateY(-2px);}
+  .form-note{font-size:0.82rem;color:#8a7a63;text-align:center;}
+
+  /* FOOTER */
+  footer{
+    background:var(--ink);color:var(--cream);
+    padding:44px 24px 26px;text-align:center;
+  }
+  footer .foot-logo{font-family:'Trebuchet MS',sans-serif;font-weight:700;font-size:1.2rem;color:var(--gold);margin-bottom:10px;}
+  footer .foot-links{display:flex;gap:20px;justify-content:center;margin:16px 0;font-family:'Trebuchet MS',sans-serif;font-size:0.9rem;flex-wrap:wrap;}
+  footer .foot-links a:hover{color:var(--gold);}
+  footer .copyright{font-size:0.8rem;color:#a8987f;margin-top:14px;}
+
+  @media (max-width:860px){
+    .nav-links, .nav-cta{display:none;}
+    .menu-toggle{display:block;}
+    .about-grid, .contact-box{grid-template-columns:1fr;}
+    .feature-grid{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    .steps{grid-template-columns:repeat(2,1fr);}
+    .about-visual{height:280px;}
+  }
+  @media (max-width:480px){
+    .gallery-grid{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Liz Plettner<span>Collage Artist · Nebraska</span></div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="nav-cta" href="https://www.instagram.com/lizplettner/" target="_blank" rel="noopener">Follow on Instagram</a>
+    <button class="menu-toggle" aria-label="Menu">☰</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">Nebraska · Mixed Media Collage</div>
+  <h1>Paper, color, and story —<br>collaged into <em>original art</em></h1>
+  <p class="lead">Liz Plettner creates one-of-a-kind collage pieces from her Nebraska studio, blending texture, pattern, and found paper into work that's warm, layered, and full of character.</p>
+  <div class="hero-buttons">
+    <a class="btn btn-primary" href="https://www.instagram.com/lizplettner/" target="_blank" rel="noopener">📷 View the Gallery on Instagram</a>
+    <a class="btn btn-outline" href="#contact">Inquire About a Piece</a>
+  </div>
+
+  <div class="collage-strip" aria-hidden="true">
+    <div class="swatch"></div>
+    <div class="swatch"></div>
+    <div class="swatch"></div>
+    <div class="swatch"></div>
+    <div class="swatch"></div>
+  </div>
+</section>
+
+<section class="about paper-bg" id="about">
+  <div class="section-inner about-grid">
+    <div class="about-visual" aria-hidden="true">
+      <div class="layer layer1"></div>
+      <div class="layer layer2"></div>
+      <div class="layer layer3">Cut. Layer.<br>Compose.</div>
+    </div>
+    <div class="about-text">
+      <div class="eyebrow">About the Artist</div>
+      <h2>Handmade collage, rooted in Nebraska</h2>
+      <p>Liz Plettner works in mixed media collage, piecing together paper, pattern, and color into compositions that reward a closer look. Each piece is built by hand — layer by layer — until the balance feels just right.</p>
+      <p>Her work draws on texture and juxtaposition, turning everyday paper into something unexpected and personal. New pieces, works in progress, and behind-the-scenes studio moments are shared regularly on Instagram.</p>
+      <div class="about-tags">
+        <span class="tag">Mixed Media</span>
+        <span class="tag">Paper Collage</span>
+        <span class="tag">Original Art</span>
+        <span class="tag">Nebraska Studio</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow">Why Collectors Love Her Work</div>
+      <h2>Art that's original, textured, and one of a kind</h2>
+      <p>Every collage is a single, unrepeatable piece — no prints, no duplicates.</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">✂️</div>
+        <h3>Handmade, One-of-a-Kind</h3>
+        <p>Each piece is cut and layered by hand, so no two collages are ever the same.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎨</div>
+        <h3>Rich Texture & Color</h3>
+        <p>Layered paper and found materials give every piece depth you can't get from paint alone.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏡</div>
+        <h3>Made in Nebraska</h3>
+        <p>Small-batch studio work, made with care and shared directly with collectors and fans.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery paper-bg" id="work">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow">A Glimpse of the Work</div>
+      <h2>Recent pieces & studio favorites</h2>
+      <p>The full, ever-growing collection lives on Instagram — new work posted regularly.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item g1"><div class="cap">Layered Paper Study</div></div>
+      <div class="gallery-item g2"><div class="cap">Studio Collage No. 12</div></div>
+      <div class="gallery-item g3"><div class="cap">Warm Tones Series</div></div>
+      <div class="gallery-item g4"><div class="cap">Found Paper Composition</div></div>
+      <div class="gallery-item g5"><div class="cap">Nebraska Prairie Palette</div></div>
+      <div class="gallery-item g6"><div class="cap">Work in Progress</div></div>
+    </div>
+    <div class="gallery-more">
+      <a class="btn btn-primary" href="https://www.instagram.com/lizplettner/" target="_blank" rel="noopener">See the Full Gallery on Instagram →</a>
+    </div>
+  </div>
+</section>
+
+<section class="insta-band">
+  <h2>New collage work drops on Instagram first</h2>
+  <p>Follow @lizplettner to see new pieces as they're finished, peek into the studio process, and be the first to know when work becomes available.</p>
+  <a class="btn" href="https://www.instagram.com/lizplettner/" target="_blank" rel="noopener">📷 Follow @lizplettner</a>
+</section>
+
+<section class="process" id="process">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow">How It Works</div>
+      <h2>Interested in a piece?</h2>
+      <p>Here's the simplest way to connect and find the right collage for your space.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Browse</h3>
+        <p>Explore current and past work on Instagram to find a style you love.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Reach Out</h3>
+        <p>Send a DM on Instagram or use the contact form below.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Talk Details</h3>
+        <p>Discuss availability, sizing, and whether the piece fits your space.</p>
+      </div>
+      <div class="step">
+        <div class="num">4</div>
+        <h3>Bring It Home</h3>
+        <p>Arrange pickup, shipping, or delivery for your new original collage.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="contact-box">
+      <div class="contact-info">
+        <h2>Let's connect</h2>
+        <p>The easiest way to reach Liz is on Instagram — DMs are open. You can also send a quick message below.</p>
+        <ul class="contact-list">
+          <li><span class="ico">📷</span> <a href="https://www.instagram.com/lizplettner/" target="_blank" rel="noopener">instagram.com/lizplettner</a></li>
+          <li><span class="ico">📍</span> Based in Nebraska, USA</li>
+          <li><span class="ico">🖼️</span> Mixed Media Collage Artist</li>
+        </ul>
+      </div>
+      <form onsubmit="event.preventDefault(); alert('Thanks for reaching out! For the fastest response, please DM @lizplettner on Instagram.');">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Tell me a bit about what you're looking for..." required></textarea>
+        <button type="submit">Send Message</button>
+        <p class="form-note">Prefer Instagram? DM @lizplettner directly for the quickest reply.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">Liz Plettner</div>
+  <div>Collage Artist · Nebraska</div>
+  <div class="foot-links">
+    <a href="https://www.instagram.com/lizplettner/" target="_blank" rel="noopener">Instagram</a>
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="copyright">© 2026 Liz Plettner. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
